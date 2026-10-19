@@ -1,0 +1,24 @@
+<Application x:Class="ProjectCleaner.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converters="clr-namespace:ProjectCleaner.Converters"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--
+                    Index 0 is the bundled Material theme (supplies DialogHost + PackIcon).
+                    The Fluent palette is merged here once and never replaced at runtime - AppTheme
+                    only rewrites its entries, once, before the first window exists.
+                -->
+                <md:BundledTheme BaseTheme="Dark" PrimaryColor="Blue" SecondaryColor="Blue" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ProjectCleaner;component/Theme/Win11.Palette.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+            <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibility" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

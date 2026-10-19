@@ -1,0 +1,96 @@
+# ---------------------------------------------------------------------------
+# Build output
+# ---------------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+artifacts/
+x64/
+x86/
+arm64/
+*.dll
+*.exe
+*.pdb
+*.apphost
+
+# ---------------------------------------------------------------------------
+# NuGet
+# ---------------------------------------------------------------------------
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!**/packages/build/
+project.assets.json
+project.nuget.cache
+*.nuget.props
+*.nuget.targets
+
+# ---------------------------------------------------------------------------
+# Visual Studio
+# ---------------------------------------------------------------------------
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+TestResults/
+[Tt]est[Rr]esult*/
+
+# ---------------------------------------------------------------------------
+# Rider / VS Code / other editors
+# ---------------------------------------------------------------------------
+.idea/
+*.sln.iml
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*~
+
+# ---------------------------------------------------------------------------
+# Coverage output
+# ---------------------------------------------------------------------------
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# ---------------------------------------------------------------------------
+# Secrets - never commit these
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.key
+*.keystore
+
+# ---------------------------------------------------------------------------
+# OS cruft
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# ---------------------------------------------------------------------------
+# Dev docs - local only, never committed or linked from the README.
+# Scoped to markdown under docs/ rather than docs/ itself, so images,
+# screenshots and other assets inside docs/ stay tracked.
+# ---------------------------------------------------------------------------
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.cursorrules
+PLAN.md
+TODO.md
+NOTES.md
+SCRATCH.md
+docs/*.md
+docs/**/*.md

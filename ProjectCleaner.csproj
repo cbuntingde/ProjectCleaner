@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <!-- Used only for FolderBrowserDialog, which is the Vista IFileDialog picker on Windows. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>ProjectCleaner.App</StartupObject>
+    <RootNamespace>ProjectCleaner</RootNamespace>
+    <AssemblyName>ProjectCleaner</AssemblyName>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <Product>Project Cleaner</Product>
+    <AssemblyTitle>Project Cleaner</AssemblyTitle>
+    <Description>Scans a folder tree for build caches and install artifacts (node_modules, __pycache__, bin/obj, dist, ...) and removes them to the Recycle Bin or permanently.</Description>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="5.3.2" />
+  </ItemGroup>
+
+  <!--
+    UseWindowsForms is on only for FolderBrowserDialog. Its implicit-usings set replaces the default
+    one, so the base usings are restored here minus System.Windows.Forms / System.Drawing - which would
+    make Application and UserControl ambiguous against their WPF counterparts.
+  -->
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+
+    <Using Include="System" />
+    <Using Include="System.Collections.Generic" />
+    <Using Include="System.IO" />
+    <Using Include="System.Linq" />
+    <Using Include="System.Threading" />
+    <Using Include="System.Threading.Tasks" />
+  </ItemGroup>
+
+</Project>

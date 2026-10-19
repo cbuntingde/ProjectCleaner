@@ -1,0 +1,114 @@
+<UserControl x:Class="ProjectCleaner.Views.ConfirmDeleteDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:ProjectCleaner.Views"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ConfirmDeleteDialogViewModel}"
+             d:DesignHeight="440" d:DesignWidth="540"
+             Background="{DynamicResource Win11.Layer}"
+             Foreground="{DynamicResource Win11.Text}">
+
+    <UserControl.Resources>
+        <!-- The irreversible action gets the critical colour, the recoverable one stays neutral. -->
+        <Style x:Key="ConfirmActionButton"
+               TargetType="ButtonBase"
+               BasedOn="{StaticResource Win11.Button.Accent}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsDestructive}" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource Win11.Danger}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource Win11.Danger}" />
+                    <Setter Property="Foreground" Value="#1A1A1A" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="30,26,30,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Headline -->
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="{Binding Headline}"
+                       Style="{StaticResource Win11.Text.Title}"
+                       TextWrapping="Wrap" />
+            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                <TextBlock Text="{Binding SummaryDisplay}"
+                           Style="{StaticResource Win11.Text.Body}" />
+                <TextBlock Text="·" Style="{StaticResource Win11.Text.Body}"
+                           Margin="6,0" />
+                <TextBlock Text="{Binding TotalSizeDisplay}"
+                           Style="{StaticResource Win11.Text.Body}"
+                           FontWeight="SemiBold" />
+                <TextBlock Text="to be freed"
+                           Style="{StaticResource Win11.Text.Caption}"
+                           Margin="6,1,0,0" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Explanation -->
+        <TextBlock Grid.Row="1"
+                   Text="{Binding Detail}"
+                   Style="{StaticResource Win11.Text.Body}"
+                   Foreground="{DynamicResource Win11.TextSecondary}"
+                   TextWrapping="Wrap"
+                   Margin="0,16,0,0" />
+
+        <!-- Sample of paths -->
+        <Border Grid.Row="2"
+                Margin="0,18,0,0"
+                Padding="14,10"
+                CornerRadius="6"
+                Background="{DynamicResource Win11.Card}"
+                BorderBrush="{DynamicResource Win11.CardBorder}"
+                BorderThickness="1">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsDestructive}" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource Win11.Danger}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+            <ScrollViewer MaxHeight="160" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding SampleLines}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"
+                                       FontFamily="{StaticResource Win11.FontMono}"
+                                       FontSize="11.5"
+                                       TextTrimming="CharacterEllipsis"
+                                       Margin="0,2"
+                                       ToolTip="{Binding}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Actions -->
+        <StackPanel Grid.Row="4"
+                    Margin="0,22,0,0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="Cancel"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource Win11.Button}"
+                    Margin="0,0,10,0" />
+
+            <Button Content="{Binding ConfirmLabel}"
+                    Command="{Binding ConfirmCommand}"
+                    Style="{StaticResource ConfirmActionButton}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

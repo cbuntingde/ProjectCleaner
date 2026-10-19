@@ -1,0 +1,56 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--
+        Default Windows 11 palette: dark. This dictionary is merged once by App.xaml and is never
+        replaced at runtime - swapping a live merged dictionary saturates the WPF dispatcher with
+        resource re-resolution. AppTheme only overwrites these entries, once, at startup.
+        Win11.Light equivalents live in Services/AppTheme.cs.
+    -->
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/ProjectCleaner;component/Theme/Win11.Controls.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush x:Key="Win11.Background" Color="#202020" />
+    <SolidColorBrush x:Key="Win11.BackgroundTint" Color="#1B1B1B" />
+    <SolidColorBrush x:Key="Win11.Layer" Color="#272727" />
+    <SolidColorBrush x:Key="Win11.LayerAlt" Color="#2D2D2D" />
+    <SolidColorBrush x:Key="Win11.Card" Color="#292929" />
+    <SolidColorBrush x:Key="Win11.CardBorder" Color="#15FFFFFF" />
+
+    <SolidColorBrush x:Key="Win11.SubtleFill" Color="#0AFFFFFF" />
+    <SolidColorBrush x:Key="Win11.SubtleFillHover" Color="#15FFFFFF" />
+    <SolidColorBrush x:Key="Win11.SubtleFillPressed" Color="#1FFFFFFF" />
+
+    <SolidColorBrush x:Key="Win11.ControlBackground" Color="#0FFFFFFF" />
+    <SolidColorBrush x:Key="Win11.ControlReadOnly" Color="#0AFFFFFF" />
+    <SolidColorBrush x:Key="Win11.ControlHover" Color="#17FFFFFF" />
+    <SolidColorBrush x:Key="Win11.ControlBorder" Color="#12FFFFFF" />
+    <SolidColorBrush x:Key="Win11.ControlStrongBorder" Color="#4DFFFFFF" />
+
+    <SolidColorBrush x:Key="Win11.Text" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="Win11.TextSecondary" Color="#C7C7C7" />
+    <SolidColorBrush x:Key="Win11.TextTertiary" Color="#8A8A8A" />
+    <SolidColorBrush x:Key="Win11.Divider" Color="#12FFFFFF" />
+
+    <SolidColorBrush x:Key="Win11.Accent" Color="#0078D4" />
+    <SolidColorBrush x:Key="Win11.AccentHover" Color="#1A86D9" />
+    <SolidColorBrush x:Key="Win11.AccentPressed" Color="#005FB8" />
+    <SolidColorBrush x:Key="Win11.OnAccent" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="Win11.AccentSubtle" Color="#1F0078D4" />
+    <SolidColorBrush x:Key="Win11.AccentText" Color="#4CC2FF" />
+
+    <SolidColorBrush x:Key="Win11.Danger" Color="#FF99A4" />
+    <SolidColorBrush x:Key="Win11.DangerFill" Color="#20FF99A4" />
+    <SolidColorBrush x:Key="Win11.DangerFillPressed" Color="#2BFF99A4" />
+
+    <SolidColorBrush x:Key="Win11.FlyoutBackground" Color="#2C2C2C" />
+    <SolidColorBrush x:Key="Win11.FlyoutBorder" Color="#15FFFFFF" />
+    <SolidColorBrush x:Key="Win11.TrackFill" Color="#15FFFFFF" />
+
+    <SolidColorBrush x:Key="Win11.ScrollThumb" Color="#66FFFFFF" />
+    <SolidColorBrush x:Key="Win11.ScrollThumbHover" Color="#99FFFFFF" />
+    <SolidColorBrush x:Key="Win11.ScrollThumbDragging" Color="#B3FFFFFF" />
+
+</ResourceDictionary>
